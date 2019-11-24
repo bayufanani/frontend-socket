@@ -1,0 +1,173 @@
+body {
+  background-image: url('bg.jpg');
+  background-size: cover;
+  font-family: 'Rubik', sans-serif;
+}
+
+.container {
+  background-color: #fff;
+  height: 100%;
+  margin: 10px 30px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.users {
+  width: 250px;
+  height: 100%;
+  position: relative;
+}
+
+.profil {
+  height: 200px;
+  margin-top: 16px;
+  ;
+  position: absolute;
+  width: 250px;
+}
+
+.foto {
+  width: 128px;
+  height: 128px;
+  background-color: gray;
+  border-radius: 64px;
+  margin: auto;
+}
+
+.profil>h3 {
+  text-align: center;
+}
+
+.users-online {
+  margin: 8px;
+  position: absolute;
+  top: 200px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: scroll;
+}
+
+.user {
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.user>.foto-thumbnail {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  background-color: rgba(76, 175, 80, 1.0);
+  margin-right: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user>h4 {
+  display: inline-block;
+  margin: 0;
+  vertical-align: middle;
+}
+
+.wrapper-chat {
+  background-color: #f7f7f7;
+  border-radius: 0 10px 10px 0;
+  position: absolute;
+  top: 0;
+  left: 250px;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+}
+
+.chat-with {
+  background-color: rgba(255, 255, 255, .5);
+  backdrop-filter: blur(30px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  z-index: 999;
+}
+
+.chat-with>.foto-thumbnail {
+  width: 48px;
+  height: 48px;
+  border-radius: 32px;
+  margin-right: 16px;
+  background-color: rgba(76, 175, 80, 1.0);
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.chat-with>.nama {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.chats {
+  position: absolute;
+  top: 8px;
+  bottom: 60px;
+  left: 8px;
+  right: 8px;
+  padding-top: 60px;
+  overflow: scroll;
+}
+
+.chats>.chat {
+  margin: 4px 0;
+  display: block;
+  position: relative;
+}
+
+.chats>.chat.right {
+  text-align: right;
+}
+
+.chats .yours {
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+  background-color: rgba(129, 199, 132, 1.0);
+  display: inline-block;
+  max-width: 400px;
+}
+
+.chats .reply {
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+  background-color: #fafafa;
+  max-width: 400px;
+  display: inline-block;
+}
+
+.pesan {
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  right: 8px;
+  height: 60px;
+}
+
+.pesan>.input {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  right: 75px;
+  left: 0;
+  display: block;
+}
+
+.input>input {
+  width: 100%;
+  height: 100%;
+}
+
+.pesan>button {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 70px;
+}
