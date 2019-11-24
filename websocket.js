@@ -1,4 +1,4 @@
-let connection = new WebSocket('ws://127.0.0.1:3000');
+let connection = new WebSocket('ws://websocket-jajalan.herokuapp.com');
 let myUsername;
 let activeWith;
 
