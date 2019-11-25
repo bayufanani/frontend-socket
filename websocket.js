@@ -1,4 +1,5 @@
-let connection = new WebSocket('wss://websocket-jajalan.herokuapp.com');
+// let connection = new WebSocket('wss://websocket-jajalan.herokuapp.com');
+let connection = new WebSocket('ws://127.0.0.1:3000');
 let myUsername;
 let activeWith;
 
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   connection.onerror = function (error) {
     // an error occurred when sending/receiving data
     alert('errro:' + error);
+    console.log(error);
   };
 
   connection.onmessage = function (message) {
@@ -26,6 +28,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
         break;
       case 'terima':
         terimaPesan(jsonMessage.pesan, jsonMessage.pengirim);
+        break;
+      case 'tanyaLagi':
+        tanyakanUsername(true);
         break;
       default:
         console.log('no action needed!');
@@ -61,6 +66,11 @@ function refreshUserOnline(usernames) {
         let el = document.getElementById('chat-with');
         el.innerHTML = username;
         activeWith = username;
+
+        document.getElementsByClassName('empty')[0].classList.add('hidden');
+        document.getElementsByClassName('chat-with')[0].classList.remove('hidden');
+        document.getElementById('chats').classList.remove('hidden');
+        document.getElementsByClassName('pesan')[0].classList.remove('hidden');
       };
       let elFotoThumbnail = document.createElement('div');
       elFotoThumbnail.className = 'foto-thumbnail';
@@ -88,8 +98,12 @@ function terimaPesan(pesan, dari) {
   }
 }
 
-function tanyakanUsername() {
-  let username = prompt('Halo, masukkan nama anda:');
+function tanyakanUsername(lagi) {
+  let greeting = 'Halo, masukkan nama anda:';
+  if (lagi) {
+    greeting = 'Username sudah digunakan, gunakan username lain:';
+  }
+  let username = prompt(greeting);
   daftarkanUsername(connection, username);
 }
 

@@ -21,11 +21,12 @@
       </div>
     </div>
     <div class="wrapper-chat">
-      <div class="chat-with">
+      <div class="empty"></div>
+      <div class="chat-with hidden">
         <div class="foto-thumbnail"></div>
         <div class="nama" id="chat-with">Nama</div>
       </div>
-      <div class="chats" id="chats">
+      <div class="chats hidden" id="chats">
         <!-- <div class="chat right">
             <div class="yours">Hello</div>
           </div>
@@ -33,7 +34,7 @@
             <div class="reply">Hai, what's up?</div>
           </div> -->
       </div>
-      <div class="pesan">
+      <div class="pesan hidden">
         <div class="input">
           <input type="text" id="txtPesan">
         </div>

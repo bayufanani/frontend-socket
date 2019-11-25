@@ -171,3 +171,19 @@ body {
   bottom: 10px;
   width: 70px;
 }
+
+.hidden {
+  display: none !important;
+}
+
+.empty {
+  background-image: url('empty.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
