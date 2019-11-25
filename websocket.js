@@ -2,6 +2,7 @@
 let connection = new WebSocket('ws://127.0.0.1:3000');
 let myUsername;
 let activeWith;
+let myChats = {};
 
 document.addEventListener("DOMContentLoaded", function (event) {
   // if user is running mozilla then use it's built-in WebSocket
@@ -71,6 +72,8 @@ function refreshUserOnline(usernames) {
         document.getElementsByClassName('chat-with')[0].classList.remove('hidden');
         document.getElementById('chats').classList.remove('hidden');
         document.getElementsByClassName('pesan')[0].classList.remove('hidden');
+
+        loadMyChats(activeWith);
       };
       let elFotoThumbnail = document.createElement('div');
       elFotoThumbnail.className = 'foto-thumbnail';
@@ -84,18 +87,70 @@ function refreshUserOnline(usernames) {
   });
 }
 
+function loadMyChats(from) {
+  let el = document.getElementById('chats');
+  while (el.firstChild) {
+    el.removeChild(el.firstChild);
+  }
+  if (myChats[from] == undefined) {
+    myChats[from] = [];
+  }
+  myChats[from].forEach(function (chat) {
+    console.log(chat);
+    if (chat.tipe == 'reply') {
+      addReply(chat.pesan);
+    } else {
+      addMyMessage(chat.pesan);
+    }
+  })
+}
+
 function terimaPesan(pesan, dari) {
   if (activeWith == dari) {
-    let el = document.getElementById('chats');
-    let chat = document.createElement('div');
-    chat.className = 'chat';
-    let reply = document.createElement('div');
-    reply.className = 'reply';
-    let replyText = document.createTextNode(pesan);
-    reply.appendChild(replyText);
-    chat.appendChild(reply);
-    el.appendChild(chat);
+    addReply(pesan);
   }
+  masukkankeMyChats(pesan, dari);
+}
+
+function addReply(pesan) {
+  let el = document.getElementById('chats');
+  let chat = document.createElement('div');
+  chat.className = 'chat';
+  let reply = document.createElement('div');
+  reply.className = 'reply';
+  let replyText = document.createTextNode(pesan);
+  reply.appendChild(replyText);
+  chat.appendChild(reply);
+  el.appendChild(chat);
+}
+
+function addMyMessage(pesan) {
+  let chat = document.createElement('div');
+  chat.className = 'chat right';
+  let yours = document.createElement('div');
+  yours.className = 'yours';
+  let yoursText = document.createTextNode(pesan);
+  yours.appendChild(yoursText);
+  chat.appendChild(yours);
+  chats.appendChild(chat);
+}
+
+function masukkankeMyChats(pesan, dari) {
+  if (myChats[dari] == undefined) {
+    myChats[dari] = [];
+  }
+
+  let tipe = 'yours';
+  let username = myUsername;
+  if (dari != myUsername) {
+    tipe = 'reply';
+  }
+
+
+  myChats[dari].push({
+    pesan: pesan,
+    tipe: tipe,
+  });
 }
 
 function tanyakanUsername(lagi) {

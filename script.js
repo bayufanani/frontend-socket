@@ -31,5 +31,6 @@ function mengirim(payload) {
     chats.scrollTo(0, chats.scrollHeight);
   }
   txtPesan.value = "";
+  masukkankeMyChats(payload.pesan, activeWith);
   connection.send(convertToPayload(payload));
 }
